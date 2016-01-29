@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-import com.liuyang.code.Util.Toast;
+import com.liuyang.code.util.Toast;
 
 /**
  * @author Liuyang 2016/1/27.
