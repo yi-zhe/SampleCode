@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">SampleCode</string>
+    <string-array name="categories">
+        <item>Widgets</item>
+        <item>Languages</item>
+    </string-array>
+    <string-array name="widgets">
+        <item>WaveTextView</item>
+        <item>WaveLoading</item>
+    </string-array>
+    <string-array name="languages">
+        <item>LambdaTest</item>
+    </string-array>
+</resources>

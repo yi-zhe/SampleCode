@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.liuyang.code.widgets.WaveLoadingView
+        android:id="@+id/wave_loading"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:bg_color="#ff0000"
+        app:text_color="@android:color/darker_gray"
+        app:text_size="15dp"
+        app:wave_color="@android:color/holo_blue_bright" />
+
+    <SeekBar
+        android:id="@+id/seekbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>
