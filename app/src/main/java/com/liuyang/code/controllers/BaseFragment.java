@@ -5,12 +5,10 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.SeekBar;
-import android.widget.TextView;
 
 import com.liuyang.code.util.Toast;
 
@@ -54,16 +52,12 @@ public abstract class BaseFragment extends Fragment {
         ((BaseActivity) getActivity()).open(f);
     }
 
-    protected RecyclerView findRecycler(int id) {
-        return (RecyclerView) host.findViewById(id);
+    protected <T extends View> T find(int id) {
+        return (T) host.findViewById(id);
     }
 
     protected SeekBar findSeekBar(int id) {
         return (SeekBar) host.findViewById(id);
-    }
-
-    protected TextView findText(int id) {
-        return (TextView) host.findViewById(id);
     }
 
     protected void show(String text) {

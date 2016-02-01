@@ -20,7 +20,7 @@ public class Widgets extends BaseFragment implements View.OnClickListener {
 
     @Override
     protected void init() {
-        RecyclerView vWidgets = findRecycler(R.id.widgets);
+        RecyclerView vWidgets = find(R.id.widgets);
         LinearLayoutManager manager = new LinearLayoutManager(host);
         manager.setOrientation(LinearLayoutManager.VERTICAL);
         vWidgets.setLayoutManager(manager);

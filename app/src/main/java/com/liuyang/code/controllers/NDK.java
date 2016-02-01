@@ -19,7 +19,7 @@ public class NDK extends BaseFragment {
 
     @Override
     protected void init() {
-        findText(R.id.ndk).setOnClickListener(v -> show(stringFromC()));
+        find(R.id.ndk).setOnClickListener(v -> show(stringFromC()));
     }
 
     @Override

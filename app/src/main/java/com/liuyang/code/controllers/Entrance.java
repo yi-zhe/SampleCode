@@ -26,7 +26,7 @@ public class Entrance extends BaseFragment implements View.OnClickListener {
 
     @Override
     protected void init() {
-        RecyclerView vEntrances = findRecycler(R.id.categories);
+        RecyclerView vEntrances = find(R.id.categories);
         LinearLayoutManager manager = new LinearLayoutManager(host);
         manager.setOrientation(LinearLayoutManager.VERTICAL);
         vEntrances.setLayoutManager(manager);

@@ -20,7 +20,7 @@ public class Languages extends BaseFragment implements View.OnClickListener {
 
     @Override
     protected void init() {
-        RecyclerView vLanguages = findRecycler(R.id.languages);
+        RecyclerView vLanguages = find(R.id.languages);
         LinearLayoutManager manager = new LinearLayoutManager(host);
         manager.setOrientation(LinearLayoutManager.VERTICAL);
         vLanguages.setLayoutManager(manager);

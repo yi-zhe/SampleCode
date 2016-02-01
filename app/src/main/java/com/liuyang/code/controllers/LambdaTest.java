@@ -15,7 +15,7 @@ public class LambdaTest extends BaseFragment {
 
     @Override
     protected void init() {
-        findText(R.id.lambda_test).setOnClickListener(v -> Toast.makeText(host, "Lambda", Toast.LENGTH_SHORT).show());
+        find(R.id.lambda_test).setOnClickListener(v -> Toast.makeText(host, "Lambda", Toast.LENGTH_SHORT).show());
     }
 
     @Override
