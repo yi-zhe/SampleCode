@@ -130,48 +130,45 @@ public class ThreePointsLoadingView extends View {
         // 范围在0到圆心移动的距离，这个是以B圆到A圆位置为基准的
         mAnimator = ValueAnimator.ofFloat(0, mMoveLength);
         // 设置监听
-        mAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-            @Override
-            public void onAnimationUpdate(ValueAnimator animation) {
-                // B圆和C圆对应的X的偏移量
-                mOffsetX = (float) animation.getAnimatedValue();
-                float fraction = animation.getAnimatedFraction();
-                // B移动到A，透明度变化255*0.8->255
-                mBBallAlpha = (int) (255 * 0.8 + 255 * fraction * 0.2);
-                // C移动到B，透明度变化255*0.6->255*0.8
-                mCBallAlpha = (int) (255 * 0.6 + 255 * fraction * 0.2);
-                // A移动到C，透明度变化255->255*0.6
-                mABallAlpha = (int) (255 - 255 * fraction * 0.4);
-                // A圆的分段二阶贝塞尔曲线的处理
-                if (fraction < 0.5) {
-                    // fraction小于0.5时，为A到B过程的情况
-                    // 乘以2是因为贝塞尔公式的t范围在0到1
-                    fraction *= 2;
-                    // 设置当前情况的起始点、控制点、终点
-                    mABallP0.set(mABallX, mABallY);
-                    mABallP1.set(mABallX + mMoveLength / 2, mABallY - mMoveLength / 2);
-                    mABallP2.set(mBBallX, mBBallY);
-                    // 代入贝塞尔公式得到贝塞尔曲线过程的x,y坐标
-                    mABallazierX = getBazierValue(fraction, mABallP0.x, mABallP1.x, mABallP2.x);
-                    mABallazierY = getBazierValue(fraction, mABallP0.y, mABallP1.y, mABallP2.y);
-                } else {
-                    // fraction大于等于0.5时，为A到B过程之后，再从B到C过程的情况
-                    // 减0.5是因为t要从0开始变化
-                    fraction -= 0.5;
-                    // 乘以2是因为贝塞尔公式的t范围在0到1
-                    fraction *= 2;
-                    // 设置当前情况的起始点、控制点、终点
-                    mABallP0.set(mBBallX, mBBallY);
-                    mABallP1.set(mBBallX + mMoveLength / 2, mBBallY + mMoveLength / 2);
-                    mABallP2.set(mCBallX, mCBallY);
+        mAnimator.addUpdateListener(animation -> {
+            // B圆和C圆对应的X的偏移量
+            mOffsetX = (float) animation.getAnimatedValue();
+            float fraction = animation.getAnimatedFraction();
+            // B移动到A，透明度变化255*0.8->255
+            mBBallAlpha = (int) (255 * 0.8 + 255 * fraction * 0.2);
+            // C移动到B，透明度变化255*0.6->255*0.8
+            mCBallAlpha = (int) (255 * 0.6 + 255 * fraction * 0.2);
+            // A移动到C，透明度变化255->255*0.6
+            mABallAlpha = (int) (255 - 255 * fraction * 0.4);
+            // A圆的分段二阶贝塞尔曲线的处理
+            if (fraction < 0.5) {
+                // fraction小于0.5时，为A到B过程的情况
+                // 乘以2是因为贝塞尔公式的t范围在0到1
+                fraction *= 2;
+                // 设置当前情况的起始点、控制点、终点
+                mABallP0.set(mABallX, mABallY);
+                mABallP1.set(mABallX + mMoveLength / 2, mABallY - mMoveLength / 2);
+                mABallP2.set(mBBallX, mBBallY);
+                // 代入贝塞尔公式得到贝塞尔曲线过程的x,y坐标
+                mABallazierX = getBazierValue(fraction, mABallP0.x, mABallP1.x, mABallP2.x);
+                mABallazierY = getBazierValue(fraction, mABallP0.y, mABallP1.y, mABallP2.y);
+            } else {
+                // fraction大于等于0.5时，为A到B过程之后，再从B到C过程的情况
+                // 减0.5是因为t要从0开始变化
+                fraction -= 0.5;
+                // 乘以2是因为贝塞尔公式的t范围在0到1
+                fraction *= 2;
+                // 设置当前情况的起始点、控制点、终点
+                mABallP0.set(mBBallX, mBBallY);
+                mABallP1.set(mBBallX + mMoveLength / 2, mBBallY + mMoveLength / 2);
+                mABallP2.set(mCBallX, mCBallY);
 
-                    // 代入贝塞尔公式得到贝塞尔曲线过程的x,y坐标
-                    mABallazierX = getBazierValue(fraction, mABallP0.x, mABallP1.x, mABallP2.x);
-                    mABallazierY = getBazierValue(fraction, mABallP0.y, mABallP1.y, mABallP2.y);
-                }
-                // 强制刷新
-                postInvalidate();
+                // 代入贝塞尔公式得到贝塞尔曲线过程的x,y坐标
+                mABallazierX = getBazierValue(fraction, mABallP0.x, mABallP1.x, mABallP2.x);
+                mABallazierY = getBazierValue(fraction, mABallP0.y, mABallP1.y, mABallP2.y);
             }
+            // 强制刷新
+            postInvalidate();
         });
         // 动画无限模式
         mAnimator.setRepeatCount(ValueAnimator.INFINITE);
