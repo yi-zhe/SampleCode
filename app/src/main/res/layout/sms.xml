@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/send_sms_via_other_app"
+        style="@style/view.text.action"
+        android:text="通过启动短信程序发送文本短信" />
+
+    <TextView
+        android:id="@+id/send_mms_via_other_app"
+        style="@style/view.text.action"
+        android:text="通过启动短信程序发送附加文件的短信" />
+</LinearLayout>
