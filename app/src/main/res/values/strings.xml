@@ -3,6 +3,7 @@
     <string-array name="categories">
         <item>Widgets</item>
         <item>Languages</item>
+        <item>Systems</item>
     </string-array>
     <string-array name="widgets">
         <item>WaveTextView</item>
@@ -12,5 +13,8 @@
     <string-array name="languages">
         <item>LambdaTest</item>
         <item>NDK</item>
+    </string-array>
+    <string-array name="systems">
+        <item>SMS</item>
     </string-array>
 </resources>
