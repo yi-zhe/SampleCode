@@ -17,5 +17,6 @@
     <string-array name="systems">
         <item>SMS</item>
         <item>Phone</item>
+        <item>ContentProvider</item>
     </string-array>
 </resources>
