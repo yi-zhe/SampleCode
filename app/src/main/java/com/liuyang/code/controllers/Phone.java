@@ -17,13 +17,8 @@ public class Phone extends BaseFragment {
 
     @Override
     protected void init() {
-        find(R.id.call_phone_dial_directly).setOnClickListener(l -> {
-            call(host, "88888888888");
-        });
-
-        find(R.id.call_phone_dial_pad).setOnClickListener(l -> {
-            dial(host, "88888888888");
-        });
+        find(R.id.call_phone_dial_directly).setOnClickListener(l -> call(host, "88888888888"));
+        find(R.id.call_phone_dial_pad).setOnClickListener(l -> dial(host, "88888888888"));
     }
 
     @Override
