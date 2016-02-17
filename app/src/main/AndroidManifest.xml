@@ -25,6 +25,7 @@
             </intent-filter>
         </activity>
 
+        <service android:name=".service.AddService" />
         <provider
             android:name=".system.SampleContentProvider"
             android:authorities="com.liuyang.code.provider" />
