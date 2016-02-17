@@ -21,5 +21,6 @@
         <item>Battery</item>
         <item>AsyncTask</item>
         <item>ContentProvider</item>
+        <item>DeviceInfo</item>
     </string-array>
 </resources>

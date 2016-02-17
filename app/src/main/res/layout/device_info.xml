@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/match_wrap">
+
+    <LinearLayout
+        style="@style/match_wrap"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/view.text"
+            android:text="基本信息" />
+
+        <TextView
+            android:id="@+id/brand"
+            style="@style/view.text" />
+
+        <TextView
+            android:id="@+id/model"
+            style="@style/view.text" />
+
+        <TextView
+            android:id="@+id/android_version_name"
+            style="@style/view.text" />
+
+        <TextView
+            android:id="@+id/cpu_model"
+            style="@style/view.text" />
+
+        <TextView
+            android:id="@+id/gpu"
+            style="@style/view.text" />
+
+        <TextView
+            android:id="@+id/resolution"
+            style="@style/view.text" />
+
+        <TextView
+            android:id="@+id/density"
+            style="@style/view.text" />
+
+        <TextView
+            android:id="@+id/serial"
+            style="@style/view.text" />
+
+        <TextView
+            style="@style/view.text"
+            android:text="存储(可用/总量)" />
+
+        <TextView
+            android:id="@+id/memory"
+            style="@style/view.text" />
+        <TextView
+            android:id="@+id/storage"
+            style="@style/view.text" />
+    </LinearLayout>
+</ScrollView>

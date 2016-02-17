@@ -6,6 +6,10 @@
     <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -29,7 +33,7 @@
         <provider
             android:name=".system.SampleContentProvider"
             android:authorities="com.liuyang.code.provider" />
-        
+
         <service
             android:name=".service.AccessService"
             android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
