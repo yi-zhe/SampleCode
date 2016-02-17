@@ -19,6 +19,7 @@
         <item>SMS</item>
         <item>Phone</item>
         <item>Battery</item>
+        <item>AsyncTask</item>
         <item>ContentProvider</item>
     </string-array>
 </resources>
