@@ -17,7 +17,7 @@ public class AsyncTask extends BaseFragment {
     @Override
     protected void init() {
         task = new MockAsyncTask();
-        task.execute(new Object[]{"AsyncTask"});
+        task.execute(new String[]{"AsyncTask"});
     }
 
     @Override
