@@ -4,6 +4,7 @@
         <item>Widgets</item>
         <item>Languages</item>
         <item>Systems</item>
+        <item>Hardware</item>
     </string-array>
     <string-array name="widgets">
         <item>WaveTextView</item>
@@ -22,5 +23,8 @@
         <item>AsyncTask</item>
         <item>ContentProvider</item>
         <item>DeviceInfo</item>
+    </string-array>
+    <string-array name="hardware">
+        <item>WIFI</item>
     </string-array>
 </resources>
