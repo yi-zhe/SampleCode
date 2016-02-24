@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.wifi.ScanResult;
+import android.net.wifi.WifiConfiguration;
 import android.net.wifi.WifiManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -76,7 +77,66 @@ public class WIFI extends BaseFragment implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         ScanResult result = scanResults.get((int) v.getTag());
-        show(result.SSID);
+        manager.disconnect();
+        // in Xiaomi 4 this will cause anr.
+        manager.addNetwork(createWifiInfo(result.SSID, "11111111", 1));
+    }
+
+    /*
+     * type == 2 is not tested.
+     */
+    public WifiConfiguration createWifiInfo(String SSID, String password, int type) {
+        WifiConfiguration config = new WifiConfiguration();
+        config.allowedAuthAlgorithms.clear();
+        config.allowedGroupCiphers.clear();
+        config.allowedKeyManagement.clear();
+        config.allowedPairwiseCiphers.clear();
+        config.allowedProtocols.clear();
+        config.SSID = "\"" + SSID + "\"";
+
+        WifiConfiguration tempConfig = this.isExsits(SSID);
+        if (tempConfig != null) {
+            manager.removeNetwork(tempConfig.networkId);
+        }
+
+        if (type == 1) {//WIFICIPHER_NOPASS
+            config.allowedKeyManagement.set(WifiConfiguration.KeyMgmt.NONE);
+        }
+
+        if (type == 2) {//WIFICIPHER_WEP
+            config.hiddenSSID = true;
+            config.wepKeys[0] = "\"" + password + "\"";
+            config.allowedAuthAlgorithms.set(WifiConfiguration.AuthAlgorithm.SHARED);
+            config.allowedGroupCiphers.set(WifiConfiguration.GroupCipher.CCMP);
+            config.allowedGroupCiphers.set(WifiConfiguration.GroupCipher.TKIP);
+            config.allowedGroupCiphers.set(WifiConfiguration.GroupCipher.WEP40);
+            config.allowedGroupCiphers.set(WifiConfiguration.GroupCipher.WEP104);
+            config.allowedKeyManagement.set(WifiConfiguration.KeyMgmt.NONE);
+            config.wepTxKeyIndex = 0;
+        }
+        if (type == 3) {//WIFICIPHER_WPA
+            config.preSharedKey = "\"" + password + "\"";
+            config.hiddenSSID = true;
+            config.allowedAuthAlgorithms.set(WifiConfiguration.AuthAlgorithm.OPEN);
+            config.allowedGroupCiphers.set(WifiConfiguration.GroupCipher.TKIP);
+            config.allowedKeyManagement.set(WifiConfiguration.KeyMgmt.WPA_PSK);
+            config.allowedPairwiseCiphers.set(WifiConfiguration.PairwiseCipher.TKIP);
+            //config.allowedProtocols.set(WifiConfiguration.Protocol.WPA);
+            config.allowedGroupCiphers.set(WifiConfiguration.GroupCipher.CCMP);
+            config.allowedPairwiseCiphers.set(WifiConfiguration.PairwiseCipher.CCMP);
+            config.status = WifiConfiguration.Status.ENABLED;
+        }
+        return config;
+    }
+
+    private WifiConfiguration isExsits(String SSID) {
+        List<WifiConfiguration> existingConfigs = manager.getConfiguredNetworks();
+        for (WifiConfiguration existingConfig : existingConfigs) {
+            if (existingConfig.SSID.equals("\"" + SSID + "\"")) {
+                return existingConfig;
+            }
+        }
+        return null;
     }
 
     private class WifiStateChangedReceiver extends BroadcastReceiver {
