@@ -1,7 +1,6 @@
 package com.liuyang.code;
 
 import android.os.Bundle;
-import android.view.View;
 
 import com.liuyang.code.controllers.BaseActivity;
 import com.liuyang.code.controllers.Entrance;
