@@ -15,14 +15,12 @@
     <string-array name="languages">
         <item>LambdaTest</item>
         <item>NDK</item>
-        <item>AIDL</item>
     </string-array>
     <string-array name="systems">
         <item>SMS</item>
         <item>Phone</item>
         <item>Battery</item>
         <item>AsyncTask</item>
-        <item>ContentProvider</item>
         <item>DeviceInfo</item>
     </string-array>
     <string-array name="hardware">
@@ -31,6 +29,8 @@
     <string-array name="ipc">
         <item>ParcelableIPC</item>
         <item>MessengerIPC</item>
+        <item>AIDL</item>
+        <item>ContentProvider</item>
     </string-array>
 
 </resources>
