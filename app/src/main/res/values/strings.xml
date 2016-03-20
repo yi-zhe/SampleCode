@@ -5,6 +5,7 @@
         <item>Languages</item>
         <item>Systems</item>
         <item>Hardware</item>
+        <item>IPC</item>
     </string-array>
     <string-array name="widgets">
         <item>WaveTextView</item>
@@ -27,4 +28,8 @@
     <string-array name="hardware">
         <item>WIFI</item>
     </string-array>
+    <string-array name="ipc">
+        <item>ParcelableIPC</item>
+    </string-array>
+
 </resources>

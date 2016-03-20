@@ -33,6 +33,10 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".controllers.ParcelableIPCActivity"
+            android:process=":parcelable" />
+
         <service android:name=".service.AddService" />
         <provider
             android:name=".system.SampleContentProvider"
