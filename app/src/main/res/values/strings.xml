@@ -6,6 +6,7 @@
         <item>Systems</item>
         <item>Hardware</item>
         <item>IPC</item>
+        <item>ViewRelated</item>
     </string-array>
     <string-array name="widgets">
         <item>WaveTextView</item>
@@ -31,6 +32,9 @@
         <item>MessengerIPC</item>
         <item>AIDL</item>
         <item>ContentProvider</item>
+    </string-array>
+    <string-array name="view_related">
+        <item>ViewBasis</item>
     </string-array>
 
 </resources>
