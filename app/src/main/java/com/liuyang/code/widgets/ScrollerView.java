@@ -2,6 +2,7 @@ package com.liuyang.code.widgets;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.widget.Scroller;
 import android.widget.TextView;
 
@@ -10,6 +11,8 @@ import android.widget.TextView;
  */
 public class ScrollerView extends TextView {
     private Scroller mScroller;
+    private int mLastX;
+    private int mLastY;
 
     public ScrollerView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -40,5 +43,28 @@ public class ScrollerView extends TextView {
             postInvalidate();
         }
         super.computeScroll();
+    }
+
+    // uncomment this part to make this view move with the finger.
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        int x = (int) event.getRawX();
+        int y = (int) event.getRawY();
+
+        if (MotionEvent.ACTION_MOVE == event.getAction()) {
+            int deltaX = x - mLastX;
+            int deltaY = y - mLastY;
+            setTranslationX(getTranslationX() + deltaX);
+            setTranslationY(getTranslationY() + deltaY);
+        }
+
+        if (MotionEvent.ACTION_UP == event.getAction()) {
+            // make our onClickListener called
+            callOnClick();
+        }
+
+        mLastX = x;
+        mLastY = y;
+        return true;
     }
 }
