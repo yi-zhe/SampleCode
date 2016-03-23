@@ -1,13 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/view_basis"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <com.liuyang.code.widgets.ViewBasis
         android:id="@+id/view_basis_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="60dp"
+        android:background="#ff8adb"
         android:clickable="true" />
-</FrameLayout>
+
+    <com.liuyang.code.widgets.ScrollerView
+        android:id="@+id/scroller_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="click to scroll" />
+</LinearLayout>
 
