@@ -1,6 +1,7 @@
 package com.liuyang.code.controllers;
 
 import android.animation.ObjectAnimator;
+import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.liuyang.code.R;
@@ -29,13 +30,18 @@ public class ViewBasis extends BaseFragment {
         });
 
         TextView animationView = find(R.id.animation_view);
+        ViewGroup.MarginLayoutParams lp = (ViewGroup.MarginLayoutParams) animationView.getLayoutParams();
         animationView.setOnClickListener(l -> {
             if (i++ % 2 == 0) {
+                lp.topMargin = 0;
                 ObjectAnimator.ofFloat(animationView, "translationX", 0, 100).setDuration(1000).start();
             } else {
+                lp.topMargin = 20;
                 ObjectAnimator.ofFloat(animationView, "translationX", 100, 0).setDuration(1000).start();
             }
+            animationView.setLayoutParams(lp);
         });
+
     }
 
     @Override
