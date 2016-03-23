@@ -17,5 +17,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="click to scroll" />
+
+    <TextView
+        android:id="@+id/animation_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="click to animate" />
 </LinearLayout>
 
