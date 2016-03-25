@@ -35,6 +35,7 @@
     </string-array>
     <string-array name="view_related">
         <item>ViewBasis</item>
+        <item>CustomNotification</item>
     </string-array>
 
 </resources>

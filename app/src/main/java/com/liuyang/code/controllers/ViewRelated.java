@@ -1,9 +1,16 @@
 package com.liuyang.code.controllers;
 
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.RemoteViews;
 
+import com.liuyang.code.Main;
 import com.liuyang.code.R;
 import com.liuyang.code.SimpleTextAdapter;
 
@@ -37,6 +44,24 @@ public class ViewRelated extends BaseFragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        open(PATH + items[(int) v.getTag()]);
+        int tag = (int) v.getTag();
+        if (tag == 1) {
+            Notification notification = new Notification();
+            notification.icon = R.mipmap.ic_launcher;
+            notification.tickerText = "hello world";
+            notification.when = System.currentTimeMillis();
+            notification.flags = Notification.FLAG_AUTO_CANCEL;
+            Intent intent = new Intent(host, Main.class);
+            PendingIntent pendingIntent = PendingIntent.getActivity(host, 0, intent, PendingIntent.FLAG_CANCEL_CURRENT);
+            RemoteViews remoteViews = new RemoteViews(host.getPackageName(), R.layout.custom_notification);
+            remoteViews.setTextViewText(R.id.msg, "hello msg");
+            remoteViews.setImageViewResource(R.id.icon, R.mipmap.ic_launcher);
+            notification.contentView = remoteViews;
+            notification.contentIntent = pendingIntent;
+            NotificationManager manager = (NotificationManager) host.getSystemService(Context.NOTIFICATION_SERVICE);
+            manager.notify(2, notification);
+            return;
+        }
+        open(PATH + items[tag]);
     }
 }
