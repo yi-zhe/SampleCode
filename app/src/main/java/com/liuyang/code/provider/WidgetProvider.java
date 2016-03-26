@@ -24,6 +24,14 @@ public class WidgetProvider extends AppWidgetProvider {
         super();
     }
 
+    /**
+     * This will be called when the widget is added to the launcher for the <strong>first</strong> time
+     */
+    @Override
+    public void onEnabled(Context context) {
+        Toast.show(context, "onEnabled");
+    }
+
     @Override
     public void onReceive(Context context, Intent intent) {
         super.onReceive(context, intent);
@@ -33,7 +41,7 @@ public class WidgetProvider extends AppWidgetProvider {
     }
 
     /**
-     * 每次窗口小部件被点击更新都调用一次该方法
+     * 每当小部件添加或者更新时都会调用一次, 更新时机由updatePeriodMillis决定
      */
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
@@ -41,6 +49,22 @@ public class WidgetProvider extends AppWidgetProvider {
         for (int appWidgetId : appWidgetIds) {
             onWidgetUpdate(context, appWidgetManager, appWidgetId);
         }
+    }
+
+    /**
+     * 每删除一个桌面小部件都会调用一次
+     */
+    @Override
+    public void onDeleted(Context context, int[] appWidgetIds) {
+        Toast.show(context, "onDeleted");
+    }
+
+    /**
+     * 最后一个该类型的桌面小部件被删除时调用
+     */
+    @Override
+    public void onDisabled(Context context) {
+        Toast.show(context, "onDisabled");
     }
 
     private void onWidgetUpdate(Context context, AppWidgetManager appWidgeManger, int appWidgetId) {
