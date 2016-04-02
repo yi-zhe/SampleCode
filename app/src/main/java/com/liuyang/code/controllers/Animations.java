@@ -1,5 +1,9 @@
 package com.liuyang.code.controllers;
 
+import android.animation.AnimatorInflater;
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
@@ -25,6 +29,9 @@ public class Animations extends BaseFragment implements View.OnClickListener {
     private View vRotateAnimationCode;
     private View vAlphaAnimationXml;
     private View vAlphaAnimationCode;
+    private View vPropertyAnimationXml;
+    private View vPropertyAnimationCode;
+    private View vValueAnimationCode;
 
     @Override
     protected int layoutId() {
@@ -58,6 +65,13 @@ public class Animations extends BaseFragment implements View.OnClickListener {
         vAlphaAnimationXml.setOnClickListener(this);
         vAlphaAnimationCode = find(R.id.alpha_animation_code);
         vAlphaAnimationCode.setOnClickListener(this);
+
+        vPropertyAnimationXml = find(R.id.property_animation_xml);
+        vPropertyAnimationXml.setOnClickListener(this);
+        vPropertyAnimationCode = find(R.id.property_animation_code);
+        vPropertyAnimationCode.setOnClickListener(this);
+        vValueAnimationCode = find(R.id.value_animation_code);
+        vValueAnimationCode.setOnClickListener(this);
     }
 
     @Override
@@ -101,6 +115,23 @@ public class Animations extends BaseFragment implements View.OnClickListener {
                 AlphaAnimation alphaAnimation = new AlphaAnimation(1, 0.5f);
                 alphaAnimation.setDuration(1000);
                 vAlphaAnimationCode.startAnimation(alphaAnimation);
+                break;
+            case R.id.property_animation_xml:
+                AnimatorSet setXml = (AnimatorSet) AnimatorInflater.loadAnimator(host, R.animator.property_animation);
+                setXml.setTarget(vPropertyAnimationXml);
+                setXml.start();
+                break;
+            case R.id.property_animation_code:
+                AnimatorSet setCode = new AnimatorSet();
+                setCode.playSequentially(ObjectAnimator.ofFloat(vPropertyAnimationCode, "alpha", 1, 0.5f),
+                        ObjectAnimator.ofFloat(vPropertyAnimationCode, "alpha", 0.5f, 1));
+                setCode.setDuration(2000).start();
+                break;
+            case R.id.value_animation_code:
+                ValueAnimator valueAnimator = ValueAnimator.ofFloat(1, 0.5f);
+                valueAnimator.addUpdateListener(animation -> vValueAnimationCode.setAlpha((float) animation.getAnimatedValue()));
+                valueAnimator.setDuration(2000);
+                valueAnimator.start();
                 break;
             default:
                 break;

@@ -54,4 +54,22 @@
         android:layout_height="40dp"
         android:text="透明度动画code" />
 
+    <TextView
+        android:id="@+id/property_animation_xml"
+        android:layout_width="160dp"
+        android:layout_height="40dp"
+        android:text="属性动画xml" />
+
+    <TextView
+        android:id="@+id/property_animation_code"
+        android:layout_width="160dp"
+        android:layout_height="40dp"
+        android:text="属性动画code" />
+
+    <TextView
+        android:id="@+id/value_animation_code"
+        android:layout_width="160dp"
+        android:layout_height="40dp"
+        android:text="ValueAnimator code" />
+
 </LinearLayout>
