@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/animations"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layoutAnimation="@anim/layout_animation"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/translate_animation_xml"
+        android:layout_width="160dp"
+        android:layout_height="40dp"
+        android:text="平移动画xml" />
+
+    <TextView
+        android:id="@+id/translate_animation_code"
+        android:layout_width="160dp"
+        android:layout_height="40dp"
+        android:text="平移动画code" />
+
+    <TextView
+        android:id="@+id/scale_animation_xml"
+        android:layout_width="160dp"
+        android:layout_height="40dp"
+        android:text="缩放动画xml" />
+
+    <TextView
+        android:id="@+id/scale_animation_code"
+        android:layout_width="160dp"
+        android:layout_height="40dp"
+        android:text="缩放动画code" />
+
+    <TextView
+        android:id="@+id/rotate_animation_xml"
+        android:layout_width="160dp"
+        android:layout_height="40dp"
+        android:text="旋转动画xml" />
+
+    <TextView
+        android:id="@+id/rotate_animation_code"
+        android:layout_width="160dp"
+        android:layout_height="40dp"
+        android:text="旋转动画code" />
+
+    <TextView
+        android:id="@+id/alpha_animation_xml"
+        android:layout_width="160dp"
+        android:layout_height="40dp"
+        android:text="透明度动画xml" />
+
+    <TextView
+        android:id="@+id/alpha_animation_code"
+        android:layout_width="160dp"
+        android:layout_height="40dp"
+        android:text="透明度动画code" />
+
+</LinearLayout>
