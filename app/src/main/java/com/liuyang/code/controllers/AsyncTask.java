@@ -15,6 +15,7 @@ public class AsyncTask extends BaseFragment {
     }
 
     @Override
+    @SuppressWarnings({"unchecked", "varargs"})
     protected void init() {
         task = new MockAsyncTask();
         task.execute(new String[]{"AsyncTask"});
