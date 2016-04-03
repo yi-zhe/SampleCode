@@ -4,6 +4,7 @@ import android.animation.AnimatorInflater;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
+import android.graphics.drawable.AnimationDrawable;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
@@ -32,6 +33,7 @@ public class Animations extends BaseFragment implements View.OnClickListener {
     private View vPropertyAnimationXml;
     private View vPropertyAnimationCode;
     private View vValueAnimationCode;
+    private View vFrameAnimation;
 
     @Override
     protected int layoutId() {
@@ -72,6 +74,9 @@ public class Animations extends BaseFragment implements View.OnClickListener {
         vPropertyAnimationCode.setOnClickListener(this);
         vValueAnimationCode = find(R.id.value_animation_code);
         vValueAnimationCode.setOnClickListener(this);
+
+        vFrameAnimation = find(R.id.frame_animation_code);
+        vFrameAnimation.setOnClickListener(this);
     }
 
     @Override
@@ -132,6 +137,9 @@ public class Animations extends BaseFragment implements View.OnClickListener {
                 valueAnimator.addUpdateListener(animation -> vValueAnimationCode.setAlpha((float) animation.getAnimatedValue()));
                 valueAnimator.setDuration(2000);
                 valueAnimator.start();
+                break;
+            case R.id.frame_animation_code:
+                ((AnimationDrawable) vFrameAnimation.getBackground()).start();
                 break;
             default:
                 break;
