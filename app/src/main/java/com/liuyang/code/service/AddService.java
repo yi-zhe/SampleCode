@@ -7,7 +7,7 @@ import android.os.RemoteException;
 import android.support.annotation.Nullable;
 
 /**
- * Created by Liuyang on 2016/2/8.
+ * @author Liuyang 2016/2/8.
  */
 public class AddService extends Service {
     @Nullable
